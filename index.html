@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SCFHS Prometric Pass Prediction Exam</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h2, h3 {
+  margin-top: 30px;
+}
+
+.question {
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 18px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* HEATMAP */
+#heatmap {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  max-width: 520px;
+  margin-top: 20px;
+}
+
+.heat {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+
+.correct { background: #2ecc71; }
+.wrong { background: #e74c3c; }
+.unanswered { background: #bdc3c7; }
+
+/* TOOLTIP */
+.heat:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 6px 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  white-space: pre-line;
+  width: 190px;
+  z-index: 10;
+}
+
+.heat:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #222 transparent transparent transparent;
+}
+</style>
+</head>
+
+<body>
+
+<h2>SCFHS Prometric Pass Prediction Exam</h2>
+
+<label>Candidate Name:
+  <input type="text" id="name">
+</label><br><br>
+
+<label>Candidate ID:
+  <input type="text" id="id">
+</label>
+
+<hr>
+
+<!-- ================= QUESTIONS ================= -->
+
+<div id="exam">
+
+<!-- Q1–Q100 -->
+<script>
+for (let i = 1; i <= 100; i++) {
+  document.write(`
+    <div class="question">
+<b>Q1. A 68-year-old male admitted with pneumonia suddenly becomes restless. BP 88/54, HR 124, RR 30, SpO₂ 89% on room air. What is the nurse’s priority action?</b><br>
+<label><input type="radio" name="q1" value="1"> Apply oxygen via non-rebreather mask</label><br>
+<label><input type="radio" name="q1" value="0"> Reassess vital signs in 15 minutes</label><br>
+<label><input type="radio" name="q1" value="0"> Notify the physician</label><br>
+<label><input type="radio" name="q1" value="0"> Document findings</label>
+</div>
+
+<div class="question">
+<b>Q2. A postoperative patient reports dizziness. BP dropped from 118/76 to 90/60 in 30 minutes. HR 112. What should the nurse do first?</b><br>
+<label><input type="radio" name="q2" value="1"> Place the patient supine and assess perfusion</label><br>
+<label><input type="radio" name="q2" value="0"> Administer prescribed analgesic</label><br>
+<label><input type="radio" name="q2" value="0"> Encourage oral fluids</label><br>
+<label><input type="radio" name="q2" value="0"> Recheck blood pressure later</label>
+</div>
+
+<div class="question">
+<b>Q3. A patient receiving IV fluids develops sudden shortness of breath and crackles. SpO₂ is 86%. What is the immediate nursing action?</b><br>
+<label><input type="radio" name="q3" value="1"> Stop the infusion and elevate the head of bed</label><br>
+<label><input type="radio" name="q3" value="0"> Reduce IV rate</label><br>
+<label><input type="radio" name="q3" value="0"> Notify the physician</label><br>
+<label><input type="radio" name="q3" value="0"> Monitor lung sounds</label>
+</div>
+
+<div class="question">
+<b>Q4. A diabetic patient is confused and diaphoretic. Capillary glucose is 42 mg/dL. What is the nurse’s priority?</b><br>
+<label><input type="radio" name="q4" value="1"> Administer rapid-acting glucose</label><br>
+<label><input type="radio" name="q4" value="0"> Call the physician</label><br>
+<label><input type="radio" name="q4" value="0"> Start IV fluids</label><br>
+<label><input type="radio" name="q4" value="0"> Document findings</label>
+</div>
+
+<div class="question">
+<b>Q5. A patient suddenly becomes unresponsive. No carotid pulse is palpable. What should the nurse do first?</b><br>
+<label><input type="radio" name="q5" value="1"> Begin chest compressions</label><br>
+<label><input type="radio" name="q5" value="0"> Check blood pressure</label><br>
+<label><input type="radio" name="q5" value="0"> Call the family</label><br>
+<label><input type="radio" name="q5" value="0"> Prepare emergency drugs</label>
+</div>
+
+<div class="question">
+<b>Q6. A patient with sepsis has urine output of 20 mL/hr for 2 hours. BP is 92/58. What does this finding indicate?</b><br>
+<label><input type="radio" name="q6" value="1"> Inadequate tissue perfusion</label><br>
+<label><input type="radio" name="q6" value="0"> Normal renal adaptation</label><br>
+<label><input type="radio" name="q6" value="0"> Expected response to antibiotics</label><br>
+<label><input type="radio" name="q6" value="0"> No immediate concern</label>
+</div>
+
+<div class="question">
+<b>Q7. A patient receiving morphine IV becomes difficult to arouse. RR is 8/min. What is the nurse’s priority?</b><br>
+<label><input type="radio" name="q7" value="1"> Support airway and breathing</label><br>
+<label><input type="radio" name="q7" value="0"> Document sedation level</label><br>
+<label><input type="radio" name="q7" value="0"> Reassess in 30 minutes</label><br>
+<label><input type="radio" name="q7" value="0"> Call the physician</label>
+</div>
+
+<div class="question">
+<b>Q8. A trauma patient arrives confused with unequal pupils. What should the nurse do first?</b><br>
+<label><input type="radio" name="q8" value="1"> Ensure airway and cervical spine protection</label><br>
+<label><input type="radio" name="q8" value="0"> Obtain consent</label><br>
+<label><input type="radio" name="q8" value="0"> Perform a full neurological exam</label><br>
+<label><input type="radio" name="q8" value="0"> Contact family</label>
+</div>
+
+<div class="question">
+<b>Q9. A patient complains of chest pain radiating to the left arm. BP 150/90, HR 104. What is the nurse’s priority?</b><br>
+<label><input type="radio" name="q9" value="1"> Administer oxygen and assess ECG</label><br>
+<label><input type="radio" name="q9" value="0"> Give antacid</label><br>
+<label><input type="radio" name="q9" value="0"> Encourage rest</label><br>
+<label><input type="radio" name="q9" value="0"> Document pain scale</label>
+</div>
+
+<div class="question">
+<b>Q10. A postoperative patient has saturated the dressing within 20 minutes. What should the nurse do first?</b><br>
+<label><input type="radio" name="q10" value="1"> Apply pressure and assess bleeding</label><br>
+<label><input type="radio" name="q10" value="0"> Change the dressing</label><br>
+<label><input type="radio" name="q10" value="0"> Notify the surgeon</label><br>
+<label><input type="radio" name="q10" value="0"> Document findings</label>
+</div>
+
+  `);
+}
+</script>
+
+</div>
+
+<button type="button" onclick="submitExam()">Submit Exam</button>
+
+<h3>Item-Level Performance Heatmap (Q1–Q100)</h3>
+<div id="heatmap"></div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+const rationales = {
+  1: "Fail-Fast: Abnormal vital signs ignored.",
+  2: "Tie-breaker: Time priority missed.",
+  3: "Medication safety logic violated.",
+  4: "Delegation trap: RN action required.",
+  5: "ABC breach: Airway not prioritized.",
+
+  41: "Calculation error → unsafe IV rate.",
+  42: "Fluid overload risk missed.",
+  61: "Ethical delay causes patient harm.",
+  81: "Tie-breaker: vital trend beats symptoms."
+};
+
+function submitExam() {
+  const heatmap = document.getElementById("heatmap");
+  heatmap.innerHTML = "";
+
+  for (let i = 1; i <= 100; i++) {
+    const answers = document.getElementsByName("q" + i);
+    let status = "unanswered";
+
+    for (let a of answers) {
+      if (a.checked) {
+        status = (a.value === "1") ? "correct" : "wrong";
+      }
+    }
+
+    const cell = document.createElement("div");
+    cell.className = "heat " + status;
+    cell.innerText = "Q" + i;
+
+    const tip =
+      rationales[i]
+        ? rationales[i]
+        : "No mapped rationale.\nTrainer review required.";
+
+    cell.setAttribute(
+      "data-tip",
+      "Status: " + status.toUpperCase() + "\n" + tip
+    );
+
+    heatmap.appendChild(cell);
+  }
+}
+</script>
+
+</body>
+</html>
